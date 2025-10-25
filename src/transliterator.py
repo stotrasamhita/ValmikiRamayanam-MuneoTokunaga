@@ -140,7 +140,7 @@ def _unrecognised(chr):
     elif options['handleUnrecognised'] == UNRECOGNISED_SUBSTITUTE:
         return options['substituteChar']
     else:
-        raise KeyError, chr
+        raise (KeyError)
  
 class TLCharacter (object):
     """ Class representing a Unicode character with its equivalents.
@@ -171,7 +171,7 @@ class TLCharacter (object):
         
         """
         if unicodeHexValue < 0 or unicodeHexValue > 0x10FFFF:
-            raise ValueError, "numeric value outside Unicode range"
+            raise ValueError#, "numeric value outside Unicode range"
         self.unicodeHexValue = unicodeHexValue
         """ Use name check to filter out unused characters.
               unicodedata.name() raises ValueError for these

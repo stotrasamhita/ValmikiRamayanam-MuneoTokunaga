@@ -1,11 +1,10 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-from __future__ import print_function
 import sys
-from transliterator import transliterate as tr
+from xsanscript import transliterate as tr
 
 # def _tr(text):
-#     return tr(text, 'harvardkyoto', 'devanagari')
+#     return tr(text, 'hk', 'devanagari')
 
 kANDa = {1: 'bAla',
          2: 'ayOdhyA',
@@ -16,7 +15,7 @@ kANDa = {1: 'bAla',
          7: 'uttara'}
 
 sarga = {1: "prathamaH",
-         2: "dwitIyaH",
+         2: "dvitIyaH",
          3: "tRtIyaH",
          4: "caturthaH",
          5: "paJcamaH",
@@ -26,7 +25,7 @@ sarga = {1: "prathamaH",
          9: "navamaH",
          10: "dazamaH",
          11: "EkAdazaH",
-         12: "dwAdazaH",
+         12: "dvAdazaH",
          13: "trayOdazaH",
          14: "caturdazaH",
          15: "paJcadazaH",
@@ -36,7 +35,7 @@ sarga = {1: "prathamaH",
          19: "EkOnaviMzaH",
          20: "viMzaH",
          21: "EkaviMzaH",
-         22: "dwAviMzaH",
+         22: "dvAviMzaH",
          23: "trayOviMzaH",
          24: "caturviMzaH",
          25: "paJcaviMzaH",
@@ -46,7 +45,7 @@ sarga = {1: "prathamaH",
          29: "EkOnatriMzaH",
          30: "triMzaH",
          31: "EkatriMzaH",
-         32: "dwAtriMzaH",
+         32: "dvAtriMzaH",
          33: "trayastriMzaH",
          34: "catustriMzaH",
          35: "paJcatriMzaH",
@@ -56,7 +55,7 @@ sarga = {1: "prathamaH",
          39: "EkOnacatvAriMzaH",
          40: "catvAriMzaH",
          41: "EkacatvAriMzaH",
-         42: "dwicatvAriMzaH",
+         42: "dvicatvAriMzaH",
          43: "tricatvAriMzaH",
          44: "catuzcatvAriMzaH",
          45: "paJcacatvAriMzaH",
@@ -66,7 +65,7 @@ sarga = {1: "prathamaH",
          49: "EkOnapaJcAzattamaH",
          50: "paJcAzattamaH",
          51: "EkapaJcAzattamaH",
-         52: "dwipaJcAzattamaH",
+         52: "dvipaJcAzattamaH",
          53: "tripaJcAzattamaH",
          54: "catuHpaJcAzattamaH",
          55: "paJcapaJcAzattamaH",
@@ -76,7 +75,7 @@ sarga = {1: "prathamaH",
          59: "EkOnaSaSTitamaH",
          60: "SaSTitamaH",
          61: "EkaSaSTitamaH",
-         62: "dwiSaSTitamaH",
+         62: "dviSaSTitamaH",
          63: "triSaSTitamaH",
          64: "catuHSaSTitamaH",
          65: "paJcaSaSTitamaH",
@@ -86,7 +85,7 @@ sarga = {1: "prathamaH",
          69: "EkOnasaptatitamaH",
          70: "saptatitamaH",
          71: "EkasaptatitamaH",
-         72: "dwisaptatitamaH",
+         72: "dvisaptatitamaH",
          73: "trisaptatitamaH",
          74: "catuHsaptatitamaH",
          75: "paJcasaptatitamaH",
@@ -126,7 +125,7 @@ sarga = {1: "prathamaH",
          109: "navamAdhikazatatamaH",
          110: "dazamAdhikazatatamaH",
          111: "EkAdazAdhikazatatamaH",
-         112: "dwAdazAdhikazatatamaH",
+         112: "dvAdazAdhikazatatamaH",
          113: "trayOdazAdhikazatatamaH",
          114: "caturdazAdhikazatatamaH",
          115: "paJcadazAdhikazatatamaH",
@@ -160,18 +159,18 @@ for i in range(num_chapter_lines):
     # print(i, shloka_ID, shloka_text, kandanum, sarganum, shlokanum)
 
     if sarganum > 1 and shlokanum == 1 and pada == 'a':
-        iti_text = tr('ityArSe zrImadrAmAyaNe vAlmIkIyE AdikAvyE %skANDE %s sargaH'
-                      % (kANDa[kandanum], sarga[sarganum - 1]), 'harvardkyoto', 'devanagari')
+        iti_text = tr('ityArSE zrImadrAmAyaNE vAlmIkIyE AdikAvyE %skANDE %s sargaH'
+                      % (kANDa[kandanum], sarga[sarganum - 1]), 'hk', 'devanagari')
         print('\n{॥%s॥}\n' % iti_text)
 
     if sarganum == nSargas + 1:
         exit(0)
 
     if sarganum == 1 and shlokanum == 1 and pada == 'a':
-        print('\\chapt{%s}\n' % tr(kANDa[kandanum] + 'kANDaH', 'harvardkyoto', 'devanagari'))
+        print('\\chapt{%s}\n' % tr(kANDa[kandanum] + 'kANDaH', 'hk', 'devanagari'))
 
     if shlokanum == 1 and pada == 'a':
-        print('\\sect{%s}\n' % tr(sarga[sarganum] + ' sargaH', 'harvardkyoto', 'devanagari'))
+        print('\\sect{%s}\n' % tr(sarga[sarganum] + ' sargaH', 'hk', 'devanagari'))
 
     if pada == 'a':
         shloka_lines = [None] * 5
@@ -182,7 +181,7 @@ for i in range(num_chapter_lines):
 
             if (i + 1) >= num_chapter_lines:
                 iti_text = tr('ityArSe zrImadrAmAyaNe vAlmIkIyE AdikAvyE %skANDE %s sargaH'
-                              % (kANDa[kandanum], sarga[sarganum]), 'harvardkyoto', 'devanagari')
+                              % (kANDa[kandanum], sarga[sarganum]), 'hk', 'devanagari')
                 print('\n{॥%s॥}\n' % iti_text)
                 exit(0)
             else:
@@ -210,7 +209,7 @@ for i in range(num_chapter_lines):
                       (l1, l2.lstrip(), l3, l4.lstrip(), kandanum, sarganum, shloka_num))
 
         elif nLines == 1:
-            print('{%s॥\devanumber{%d}॥} %%||%d-%d-%d|| (Check)\n' % (shloka_lines[0][:-1],
+            print('{%s॥\\devanumber{%d}॥} %%||%d-%d-%d|| (Check)\n' % (shloka_lines[0][:-1],
                   shloka_num, kandanum, sarganum, shloka_num))
             print('\\addtocounter{shlokacount}{1}\n')
 
